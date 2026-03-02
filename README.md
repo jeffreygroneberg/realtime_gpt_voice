@@ -121,3 +121,27 @@ python main.py
 ```
 
 Speak into your microphone. The assistant replies through your speakers and transcripts plus token usage are printed to the console. Press **Ctrl+C** to exit and see a session summary.
+
+## References & Further Reading
+
+### Azure OpenAI Realtime API
+
+- [GPT Realtime API Guide](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/realtime-audio) — comprehensive how-to covering connection methods (WebRTC, WebSocket, SIP), session configuration, VAD, and troubleshooting
+- [Realtime API via WebSockets](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/realtime-audio-websockets) — WebSocket-specific architecture, connection/authentication details, and endpoint format
+- [Realtime Audio Event Reference](https://learn.microsoft.com/azure/ai-foundry/openai/realtime-audio-reference) — full client/server event schema reference (the events handled in `process_events`)
+- [Realtime API Quickstart](https://learn.microsoft.com/azure/ai-foundry/openai/realtime-audio-quickstart) — step-by-step quickstart for getting your first session running
+
+### Azure OpenAI Models
+
+- [Azure OpenAI Model Catalog](https://learn.microsoft.com/azure/ai-foundry/openai/concepts/models) — complete list of available models including audio/realtime models and regional availability
+- [Audio Concepts](https://learn.microsoft.com/azure/ai-foundry/openai/concepts/audio) — overview of GPT-4o Audio, Realtime API, and audio completions capabilities
+
+### Observability & Tracing
+
+- [Enable Azure Monitor OpenTelemetry (Python)](https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python) — how to enable the Azure Monitor OpenTelemetry distro in Python applications
+- [Configure Azure Monitor OpenTelemetry](https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-configuration?tabs=python) — connection strings, sampling, live metrics, and advanced configuration
+- [azure-monitor-opentelemetry Python SDK](https://learn.microsoft.com/python/api/overview/azure/monitor-opentelemetry-readme) — API reference and usage guide for the `azure-monitor-opentelemetry` package
+
+### Python SDK
+
+- [openai Python SDK on PyPI](https://pypi.org/project/openai/) — the official OpenAI Python library with Realtime API support via `client.realtime.connect()`
