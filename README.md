@@ -1,6 +1,32 @@
 # Azure OpenAI Realtime API — Voice Console Chat
 
-A speech-in / speech-out console application that connects to the **Azure OpenAI GPT-4o Realtime API** over WebSocket. You speak into your microphone, the model processes your audio in real time, and replies with synthesised speech — all without a separate STT or TTS service.
+A speech-in / speech-out console application that connects to the **Azure OpenAI Realtime API** over WebSocket. You speak into your microphone, the model processes your audio in real time, and replies with synthesised speech — all without a separate STT or TTS service.
+
+## The Model: GPT-Realtime-1.5
+
+This project uses **`gpt-realtime-1.5`** (version `2026-02-23`), the newest generally available realtime model on Azure OpenAI. Released in February 2026, it is the successor to the `gpt-4o-realtime-preview` and `gpt-realtime` model lines and brings focused improvements over the previous generation:
+
+- **Improved instruction following** — more accurate adherence to tone, pacing, and escalation instructions
+- **Enhanced multi-lingual support** — better quality across a wider range of languages
+- **Improved tool/function calling** — more reliable invocation of developer-defined functions, including async function calling
+- **Low-latency real-time interactions** — preserves the sub-second response times of its predecessors
+- **GA status** — this is a fully supported, production-ready model (retirement no earlier than February 2027)
+
+The model accepts 24 kHz PCM16 mono audio input and produces audio output in the same format. It supports up to 28,672 input tokens and 4,096 output tokens per request.
+
+### Available Realtime Models on Azure
+
+For reference, the full lineup of realtime models currently available on Azure (East US 2 and Sweden Central):
+
+| Model | Version | Status |
+|---|---|---|
+| `gpt-4o-mini-realtime-preview` | 2024-12-17 | Preview |
+| `gpt-4o-realtime-preview` | 2024-12-17 / 2025-06-03 | Preview |
+| `gpt-realtime` | 2025-08-28 | GA |
+| `gpt-realtime-mini` | 2025-10-06 / 2025-12-15 | GA |
+| **`gpt-realtime-1.5`** | **2026-02-23** | **GA (used in this project)** |
+
+To switch models, deploy a different one to your Azure OpenAI resource and update `AZURE_OPENAI_DEPLOYMENT` in your `.env` file. No code changes are required — the WebSocket API is the same across all realtime models.
 
 ## How It Works
 
@@ -66,7 +92,7 @@ When an Application Insights connection string is provided, the app configures *
 - Python 3.10+
 - A microphone (built-in or USB)
 - `portaudio` system library — on macOS: `brew install portaudio`
-- An Azure OpenAI resource with a **`gpt-4o-realtime-preview`** deployment (available in Sweden Central or East US 2)
+- An Azure OpenAI resource with a realtime model deployment (e.g. **`gpt-realtime-1.5`**) in Sweden Central or East US 2
 
 ## Setup
 
@@ -83,7 +109,7 @@ Create a `.env` file:
 ```
 AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/
 AZURE_OPENAI_API_KEY=<your-key>
-AZURE_OPENAI_DEPLOYMENT=gpt-4o-realtime-preview
+AZURE_OPENAI_DEPLOYMENT=gpt-realtime-1-5
 AZURE_OPENAI_API_VERSION=2025-04-01-preview
 APPLICATIONINSIGHTS_CONNECTION_STRING=<optional — enables tracing>
 ```
