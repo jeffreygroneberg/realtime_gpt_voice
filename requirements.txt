@@ -1,0 +1,8 @@
+openai>=2.24.0
+python-dotenv>=1.2.2
+websockets>=16.0
+numpy>=2.4.2
+sounddevice>=0.5.5
+azure-ai-projects>=1.0.0
+azure-monitor-opentelemetry>=1.8.6
+azure-identity>=1.25.2
