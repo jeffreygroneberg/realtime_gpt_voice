@@ -321,7 +321,7 @@ async def main() -> None:
         await connection.session.update(
             session={
                 "modalities": ["text", "audio"],
-                "voice": "alloy",
+                "voice": "marin",
                 "instructions": (
                     "You are a helpful, concise voice assistant. "
                     "Respond naturally and briefly."
